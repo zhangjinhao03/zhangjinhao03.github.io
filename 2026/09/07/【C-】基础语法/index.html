@@ -1,0 +1,277 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>【C++】基础语法 | 敲代码的猫</title><meta name="author" content="敲代码的猫"><meta name="copyright" content="敲代码的猫"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="article">
+<meta property="og:title" content="【C++】基础语法">
+<meta property="og:url" content="http://example.com/2026/09/07/%E3%80%90C-%E3%80%91%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/index.html">
+<meta property="og:site_name" content="敲代码的猫">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/830179.jpg">
+<meta property="article:published_time" content="2026-09-07T10:59:55.000Z">
+<meta property="article:modified_time" content="2026-09-07T11:04:53.393Z">
+<meta property="article:author" content="敲代码的猫">
+<meta property="article:tag" content="CPP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/830179.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "【C++】基础语法",
+  "url": "http://example.com/2026/09/07/%E3%80%90C-%E3%80%91%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/",
+  "image": "http://example.com/img/830179.jpg",
+  "datePublished": "2026-09-07T10:59:55.000Z",
+  "dateModified": "2026-09-07T11:04:53.393Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "敲代码的猫",
+      "url": "http://example.com"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/icon.jpg"><link rel="canonical" href="http://example.com/2026/09/07/%E3%80%90C-%E3%80%91%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        const data = { value }
+
+        if (ttl != null) {
+          data.expiry = Date.now() + ttl * 86400000
+        }
+
+        localStorage.setItem(key, JSON.stringify(data))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return
+
+        try {
+          const data = JSON.parse(itemStr)
+
+          if (data.expiry && Date.now() > data.expiry) {
+            localStorage.removeItem(key)
+            return
+          }
+
+          return data.value
+        } catch {
+          localStorage.removeItem(key)
+        }
+      }
+    }
+
+    const scriptCache = new Map()
+    const cssCache = new Map()
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => {
+        if (scriptCache.has(url)) {
+          return scriptCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+
+          script.src = url
+          script.async = true
+
+          for (const key in attr) {
+            script.setAttribute(key, attr[key])
+          }
+
+          script.onload = resolve
+          script.onerror = reject
+
+          document.head.appendChild(script)
+        })
+
+        scriptCache.set(url, promise)
+
+        return promise
+      },
+      getCSS: (url, id) => {
+        if (cssCache.has(url)) {
+          return cssCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const link = document.createElement('link')
+
+          link.rel = 'stylesheet'
+          link.href = url
+
+          if (id) {
+            link.id = id
+          }
+
+          link.onload = resolve
+          link.onerror = reject
+
+          document.head.appendChild(link)
+        })
+
+        cssCache.set(url, promise)
+
+        return promise
+      },
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const metaThemeColor = document.querySelector('meta[name="theme-color"]')
+      const activateDarkMode = () => {
+        document.documentElement.dataset.theme = 'dark'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', 'undefined')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.dataset.theme = 'light'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', 'undefined')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"No results found for: ${query}","hits_stats":"${hits} articles found"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: '[object Object]',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【C++】基础语法',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/custom.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div class="bg-animation" id="web_bg" style="background-image: url(/img/background.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/loading.gif" data-lazy-src="/img/icon.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">33</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">21</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/830179.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">敲代码的猫</span></a><a class="nav-page-title" href="/"><span class="site-name">【C++】基础语法</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">【C++】基础语法</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-09-07T10:59:55.000Z" title="Created 2026-09-07 18:59:55">2026-09-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-09-07T11:04:53.393Z" title="Updated 2026-09-07 19:04:53">2026-09-07</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Markdown/">Markdown</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">敲代码的猫</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/2026/09/07/%E3%80%90C-%E3%80%91%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">http://example.com/2026/09/07/%E3%80%90C-%E3%80%91%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/CPP/">CPP</a></div><div class="post-share"><div class="social-share" data-image="/img/830179.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related  no-desc" href="/2026/09/07/%E3%80%90C-%E3%80%91%E6%8C%87%E9%92%88%E4%B8%8E%E5%BC%95%E7%94%A8/" title="【C++】指针与引用"><img class="cover" src="/img/loading.gif" data-lazy-src="/img/830179.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">【C++】指针与引用</div></div></div></a><a class="pagination-related" href="/2026/09/07/%E3%80%90Algorithm%E3%80%9110%E5%A4%A7%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" title="【Algorithm】10大排序算法"><img class="cover" src="/img/loading.gif" data-lazy-src="/img/870135.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">【Algorithm】10大排序算法</div></div><div class="info-2"><div class="info-item-1">10大排序算法0.头文件sort.h 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152#ifndef DEF_SORT_H#define DEF_SORT_H#include &lt;iostream&gt;#include &lt;cmath&gt;#include &lt;algorithm&gt;#include &lt;vector&gt;using namespace std;enum SortMod&#123;    asc,    des&#125;;class Sort&#123;public:    Sort()&#123;&#125;    ~Sort()&#123;&#125;public:    void swap(int &amp;num1, int &amp;num2);    int BubbleSort(vector&lt;int&gt; &amp;nums, SortMod mod);    int Sel...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/08/06/%E3%80%90C++%E3%80%91%E5%80%BC%E7%B1%BB%E5%88%AB%E4%B8%8E%E5%BC%95%E7%94%A8%E4%BD%93%E7%B3%BB/" title="【C++】值类别"><img class="cover" src="/img/loading.gif" data-lazy-src="/img/img1.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-08-06</div><div class="info-item-2">【C++】值类别</div></div><div class="info-2"><div class="info-item-1">【C++】值类别 当前已学：左值、右值、左值引用、const 左值引用、右值引用。   1. 左值和右值1.1 一句话理解12左值：有身份、能长期存在、可以反复访问的表达式。右值：临时产生、用完即走的表达式。  粗略判断： 12有名字、通常能取地址 -&gt; 左值临时结果、字面量、表达式结果 -&gt; 右值   1.2 左值例子1int a = 10;  这里 a 是左值。 原因： 123a 有名字a 有稳定地址a 可以被再次访问  例如： 1&amp;a  可以取地址。  1.3 右值例子110  10 是右值。 原因： 123它是一个临时值没有名字不能长期访问  例如： 1int a = 10;  这里： 12a  是左值10 是右值   1.4 表达式结果也可能是右值1234int a = 1;int b = 2;int c = a + b;  这里： 1a + b  是右值。 因为它只是临时计算结果。  1.5 左值不等于能放在等号左边1const int x = 10;  x 是左值，因为它有名字、有地址、可以反复访问。 但是： 1x = 20; // 错误  原因...</div></div></div></a><a class="pagination-related no-desc" href="/2026/09/07/%E3%80%90C-%E3%80%91%E5%B8%B8%E8%A7%81%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E8%B7%B5/" title="【C++】常见设计与实践"><img class="cover" src="/img/loading.gif" data-lazy-src="/img/830179.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-09-07</div><div class="info-item-2">【C++】常见设计与实践</div></div></div></a><a class="pagination-related no-desc" href="/2026/09/07/%E3%80%90C-%E3%80%91%E6%A0%87%E5%87%86%E6%A8%A1%E7%89%88%E5%BA%93STL/" title="【C++】标准模版库STL"><img class="cover" src="/img/loading.gif" data-lazy-src="/img/830179.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-09-07</div><div class="info-item-2">【C++】标准模版库STL</div></div></div></a><a class="pagination-related" href="/2026/08/10/%E3%80%90C++%E3%80%91%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/" title="【C++】多线程与并发"><img class="cover" src="/img/loading.gif" data-lazy-src="/img/830179.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-08-10</div><div class="info-item-2">【C++】多线程与并发</div></div><div class="info-2"><div class="info-item-1">多线程与并发1. 学习目标本笔记用于快速掌握 C++ 并发编程中的几个核心概念：  什么是数据竞争 什么是原子性 volatile 的真正作用 std::atomic 的作用 std::mutex 锁的作用 什么时候用 atomic，什么时候用 mutex  核心结论： 1234volatile 不能保证线程安全。volatile 不能保证原子性。volatile 不能替代锁。volatile 不能替代 std::atomic。  现代 C++ 多线程同步主要使用： 12345std::atomicstd::mutexstd::lock_guardstd::unique_lockstd::condition_variable   2. 推荐学习顺序123451. 先理解什么是数据竞争2. 再理解什么是原子性3. 再区分 volatile 和 atomic4. 再学习 mutex 锁5. 最后理解 atomic 和锁分别适合什么场景   3. 什么是原子性原子性表示： 12一个操作要么完整发生，要么完全没有发生；中间状态不会被其他线程看到。  例如： 1x++;  这行代码看起来是...</div></div></div></a><a class="pagination-related" href="/2026/09/04/%E3%80%90C++%E3%80%91%E7%9F%A5%E8%AF%86%E4%BD%93%E7%B3%BB/" title="【C++】知识体系"><img class="cover" src="/img/loading.gif" data-lazy-src="/img/830179.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-09-04</div><div class="info-item-2">【C++】知识体系</div></div><div class="info-2"><div class="info-item-1">C++知识体系1. 基础语法【C++】基础语法   数据类型：int、char、float、double、bool 变量、常量、作用域 运算符 条件、循环 函数 头文件与命名空间  2. 指针与引用【C++】指针与引用   指针 指针运算 空指针 引用 指针和引用的区别 const 指针、const 引用  3. 内存管理【C++】内存管理   栈、堆、静态区 new &#x2F; delete malloc &#x2F; free 内存泄漏 野指针、悬空指针 内存对齐  4. 面向对象【C++】面向对象   类与对象 构造函数 &#x2F; 析构函数 拷贝构造 &#x2F; 拷贝赋值 默认构造、移动构造、移动赋值 封装、继承、多态 访问权限：public &#x2F; protected &#x2F; private 虚函数、纯虚函数、抽象类、虚函数表 对象布局 override、final  5. 值类别与引用体系【C++】值类别   std::forward 完美转发  6. 资源管理与智能指针【C++】资源管理与智能指针   RAII 自定义删除器  7. 标准模板库 S...</div></div></div></a><a class="pagination-related no-desc" href="/2026/09/07/%E3%80%90C-%E3%80%91%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" title="【C++】内存管理"><img class="cover" src="/img/loading.gif" data-lazy-src="/img/830179.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-09-07</div><div class="info-item-2">【C++】内存管理</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comments</span></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/loading.gif" data-lazy-src="/img/icon.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">敲代码的猫</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">33</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">21</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/zhangjinhao03"><i class="fab fa-github"></i><span>github</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">欢迎来到敲代码的猫的博客</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/09/07/%E3%80%90C-%E3%80%91%E5%B8%B8%E8%A7%81%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E8%B7%B5/" title="【C++】常见设计与实践"><img src="/img/loading.gif" data-lazy-src="/img/830179.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【C++】常见设计与实践"/></a><div class="content"><a class="title" href="/2026/09/07/%E3%80%90C-%E3%80%91%E5%B8%B8%E8%A7%81%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E8%B7%B5/" title="【C++】常见设计与实践">【C++】常见设计与实践</a><time datetime="2026-09-07T11:03:04.000Z" title="Created 2026-09-07 19:03:04">2026-09-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/09/07/%E3%80%90C-%E3%80%91%E8%BF%9B%E9%98%B6%E5%B7%A5%E7%A8%8B%E8%83%BD%E5%8A%9B/" title="【C++】进阶工程能力"><img src="/img/loading.gif" data-lazy-src="/img/830179.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【C++】进阶工程能力"/></a><div class="content"><a class="title" href="/2026/09/07/%E3%80%90C-%E3%80%91%E8%BF%9B%E9%98%B6%E5%B7%A5%E7%A8%8B%E8%83%BD%E5%8A%9B/" title="【C++】进阶工程能力">【C++】进阶工程能力</a><time datetime="2026-09-07T11:01:57.000Z" title="Created 2026-09-07 19:01:57">2026-09-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/09/07/%E3%80%90C-%E3%80%91C-11%E6%96%B0%E7%89%B9%E6%80%A7/" title="【C++】C++11新特性"><img src="/img/loading.gif" data-lazy-src="/img/830179.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【C++】C++11新特性"/></a><div class="content"><a class="title" href="/2026/09/07/%E3%80%90C-%E3%80%91C-11%E6%96%B0%E7%89%B9%E6%80%A7/" title="【C++】C++11新特性">【C++】C++11新特性</a><time datetime="2026-09-07T11:01:46.000Z" title="Created 2026-09-07 19:01:46">2026-09-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/09/07/%E3%80%90C-%E3%80%91%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" title="【C++】异常处理"><img src="/img/loading.gif" data-lazy-src="/img/830179.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【C++】异常处理"/></a><div class="content"><a class="title" href="/2026/09/07/%E3%80%90C-%E3%80%91%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" title="【C++】异常处理">【C++】异常处理</a><time datetime="2026-09-07T11:01:04.000Z" title="Created 2026-09-07 19:01:04">2026-09-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/09/07/%E3%80%90C-%E3%80%91%E6%A8%A1%E7%89%88%E4%B8%8E%E6%B3%9B%E5%9E%8B%E7%BC%96%E7%A8%8B/" title="【C++】模版与泛型编程"><img src="/img/loading.gif" data-lazy-src="/img/830179.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【C++】模版与泛型编程"/></a><div class="content"><a class="title" href="/2026/09/07/%E3%80%90C-%E3%80%91%E6%A8%A1%E7%89%88%E4%B8%8E%E6%B3%9B%E5%9E%8B%E7%BC%96%E7%A8%8B/" title="【C++】模版与泛型编程">【C++】模版与泛型编程</a><time datetime="2026-09-07T11:00:55.000Z" title="Created 2026-09-07 19:00:55">2026-09-07</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/img/background1.jpg);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By 敲代码的猫</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.7.0</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="Scroll to Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.7.0"></script><script src="/js/main.js?v=5.7.0"></script><script src="/"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@19.1.3/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const getGiscusTheme = theme => theme === 'dark' ? 'preferred_color_scheme' : 'preferred_color_scheme'
+
+  const createScriptElement = config => {
+    const ele = document.createElement('script')
+    Object.entries(config).forEach(([key, value]) => {
+      ele.setAttribute(key, value)
+    })
+    return ele
+  }
+
+  const loadGiscus = (el = document, key) => {
+    const mappingConfig = isShuoshuo
+      ? { 'data-mapping': 'specific', 'data-term': key }
+      : { 'data-mapping': (option && option['data-mapping']) || 'pathname' }
+
+    const giscusConfig = {
+      src: 'https://giscus.app/client.js',
+      'data-repo': 'zhangjinhao03/zhangjinhao03-blog-comments',
+      'data-repo-id': 'R_kgDOTvshmA',
+      'data-category-id': 'DIC_kwDOTvshmM4DCykF',
+      'data-theme': getGiscusTheme(document.documentElement.getAttribute('data-theme')),
+      'data-reactions-enabled': '1',
+      crossorigin: 'anonymous',
+      async: true,
+      ...option,
+      ...mappingConfig
+    }
+
+    const scriptElement = createScriptElement(giscusConfig)
+
+    el.querySelector('#giscus-wrap').appendChild(scriptElement)
+
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyGiscus = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+  }
+
+  const changeGiscusTheme = theme => {
+    const iframe = document.querySelector('#giscus-wrap iframe')
+    if (iframe) {
+      const message = {
+        giscus: {
+          setConfig: {
+            theme: getGiscusTheme(theme)
+          }
+        }
+      }
+      iframe.contentWindow.postMessage(message, 'https://giscus.app')
+    }
+  }
+
+  btf.addGlobalFn('themeChange', changeGiscusTheme, 'giscus')
+
+  if (isShuoshuo) {
+    'Giscus' === 'Giscus'
+      ? window.shuoshuoComment = { loadComment: loadGiscus }
+      : window.loadOtherComment = loadGiscus
+    return
+  }
+
+  if ('Giscus' === 'Giscus' || !false) {
+    if (false) btf.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+    else loadGiscus()
+  } else {
+    window.loadOtherComment = loadGiscus
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading Database</span></div><div class="local-search-input"><input placeholder="搜索文章" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.7.0"></script></div></div></body></html>
