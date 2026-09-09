@@ -1,0 +1,402 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>问卷 | 敲代码的猫</title><meta name="author" content="敲代码的猫"><meta name="copyright" content="敲代码的猫"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="A LITTLE SELF-DISCOVERY     认识自己，从一个选择开始     没有标准答案，凭第一直觉完成这份小问卷即可。你的回答只会保留在当前页面中。                   完成进度       0 &#x2F; 20                                               查看结果       重新填写">
+<meta property="og:type" content="website">
+<meta property="og:title" content="问卷">
+<meta property="og:url" content="http://example.com/2026/09/09/index/index.html">
+<meta property="og:site_name" content="敲代码的猫">
+<meta property="og:description" content="A LITTLE SELF-DISCOVERY     认识自己，从一个选择开始     没有标准答案，凭第一直觉完成这份小问卷即可。你的回答只会保留在当前页面中。                   完成进度       0 &#x2F; 20                                               查看结果       重新填写">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/icon.jpg">
+<meta property="article:published_time" content="2026-09-09T08:11:31.788Z">
+<meta property="article:modified_time" content="2026-09-09T08:11:31.788Z">
+<meta property="article:author" content="敲代码的猫">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/icon.jpg"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/icon.jpg"><link rel="canonical" href="http://example.com/2026/09/09/index/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        const data = { value }
+
+        if (ttl != null) {
+          data.expiry = Date.now() + ttl * 86400000
+        }
+
+        localStorage.setItem(key, JSON.stringify(data))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return
+
+        try {
+          const data = JSON.parse(itemStr)
+
+          if (data.expiry && Date.now() > data.expiry) {
+            localStorage.removeItem(key)
+            return
+          }
+
+          return data.value
+        } catch {
+          localStorage.removeItem(key)
+        }
+      }
+    }
+
+    const scriptCache = new Map()
+    const cssCache = new Map()
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => {
+        if (scriptCache.has(url)) {
+          return scriptCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+
+          script.src = url
+          script.async = true
+
+          for (const key in attr) {
+            script.setAttribute(key, attr[key])
+          }
+
+          script.onload = resolve
+          script.onerror = reject
+
+          document.head.appendChild(script)
+        })
+
+        scriptCache.set(url, promise)
+
+        return promise
+      },
+      getCSS: (url, id) => {
+        if (cssCache.has(url)) {
+          return cssCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const link = document.createElement('link')
+
+          link.rel = 'stylesheet'
+          link.href = url
+
+          if (id) {
+            link.id = id
+          }
+
+          link.onload = resolve
+          link.onerror = reject
+
+          document.head.appendChild(link)
+        })
+
+        cssCache.set(url, promise)
+
+        return promise
+      },
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const metaThemeColor = document.querySelector('meta[name="theme-color"]')
+      const activateDarkMode = () => {
+        document.documentElement.dataset.theme = 'dark'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', 'undefined')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.dataset.theme = 'light'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', 'undefined')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"No results found for: ${query}","hits_stats":"${hits} articles found"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: '[object Object]',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '问卷',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'page'
+}</script><link rel="stylesheet" href="/css/custom.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div class="bg-animation" id="web_bg" style="background-image: url(/img/background.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/loading.gif" data-lazy-src="/img/icon.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">37</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">24</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">1</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header" style="background-image: url(/img/background1.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">敲代码的猫</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="page-site-info"><h1 id="site-title">问卷</h1></div></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="container post-content" id="article-container">
+<div class="questionnaire-page">
+  <section class="questionnaire-hero" aria-labelledby="questionnaire-title">
+    <p class="questionnaire-eyebrow">A LITTLE SELF-DISCOVERY</p>
+    <h1 id="questionnaire-title">认识自己，从一个选择开始</h1>
+    <p class="questionnaire-intro">没有标准答案，凭第一直觉完成这份小问卷即可。你的回答只会保留在当前页面中。</p>
+  </section>
+
+  <div class="questionnaire-progress" aria-live="polite">
+    <div class="questionnaire-progress-heading">
+      <span>完成进度</span>
+      <strong><span id="questionnaire-count">0</span> / 20</strong>
+    </div>
+    <div class="questionnaire-progress-track" role="progressbar" aria-label="问卷完成进度" aria-valuemin="0" aria-valuemax="20" aria-valuenow="0">
+      <span id="questionnaire-progress-bar"></span>
+    </div>
+  </div>
+
+  <form id="questionnaire-form" class="questionnaire-form" novalidate>
+    <div id="questionnaire-list"></div>
+
+    <div class="questionnaire-actions">
+      <button type="submit" class="questionnaire-button questionnaire-button-primary">查看结果</button>
+      <button type="button" id="questionnaire-reset" class="questionnaire-button questionnaire-button-secondary">重新填写</button>
+    </div>
+  </form>
+
+  <section id="questionnaire-result" class="questionnaire-result" aria-live="polite" hidden>
+    <div class="questionnaire-result-mark" aria-hidden="true">✓</div>
+    <div>
+      <h2>提交成功</h2>
+      <p>你已完成 <span id="questionnaire-result-count">0</span> / 20 题，答卷已保存到服务器。</p>
+      <ol id="questionnaire-summary"></ol>
+    </div>
+  </section>
+
+  <p id="questionnaire-error" class="questionnaire-error" role="alert" hidden>请完成所有题目后再查看结果。</p>
+</div>
+
+<script>
+(function () {
+  const questions = [
+    ['周末休息，你更倾向？', ['约朋友出门逛街聚会', '一半社交一半独处', '自己宅家，不被打扰']],
+    ['遇到烦心事，你会？', ['立刻找人倾诉吐槽', '先自己消化，必要时再说', '习惯自己扛，很少跟别人讲']],
+    ['做计划的时候，你更喜欢？', ['随性走，走一步看一步', '价值相等大致有个框架，允许临时变动', '提前安排好所有细节']],
+    ['此时此刻有两件价值相等物品可以拿走，你更偏向？', ['可爱的头戴耳机', '好看的化妆品套装']],
+    ['别人对你提出不同意见，你的第一反应？', ['会有点不舒服，但愿意沟通', '冷静听完，再判断对错', '内心会思考，但不会轻易表露情绪']],
+    ['此时此刻有三件价值相等物品可以拿走，你更偏向？', ['漂亮的新鞋子', '好闻的香水', '好看的新衣服']],
+    ['面对新的陌生环境，你会？', ['很快主动搭话，快速融入', '慢慢观察，熟悉之后放开', '保持距离，先观察再接触']],
+    ['如果可以随便选，你更偏爱实物礼物，还是体验类礼物（约会、旅行、手工体验）？', ['实物，拿到手里很有幸福感', '体验类，一起经历的回忆更重要', '两者都可以，看心意']],
+    ['当你要做一个重要决定，你习惯？', ['快速下定决心，不纠结', '多方打听参考别人建议再定', '反复权衡，想很久才做选择']],
+    ['下面哪一类小东西，会让你觉得很开心？', ['饰品（项链、手链、耳钉）', '香薰、蜡烛、氛围感摆件', '毛绒玩偶、可爱周边', '美妆护肤（口红、香水）', '书籍/手办']],
+    ['朋友向你倾诉难过的事，你第一反应是？', ['帮她想解决办法，出主意', '共情安慰，先陪着情绪', '静静倾听，不多发表看法']],
+    ['你平时会有“很想要，但一直没舍得买”的东西吗？', ['有，会偶尔念叨', '有，但不会经常说', '基本没有']],
+    ['朋友向你倾诉难过的事，你第一反应是？', ['帮她想解决办法，出主意', '共情安慰，先陪着情绪', '静静倾听，不多发表看法']],
+    ['计划被临时打乱，你的感受是？', ['无所谓，随机应变也挺好', '有点烦躁，但可以接受调整', '会很不舒服，希望一切按计划走']],
+    ['空闲时间，你更愿意？', ['找人一起玩，热热闹闹', '一部分社交一部分自己待着', '独自享受安静时光']],
+    ['别人夸奖你的时候，你会？', ['开心坦然接受', '有点不好意思，谦虚推脱', '内心会思考对方是不是真心']],
+    ['发生矛盾争吵，你倾向？', ['当场把话说开，尽快解决', '先冷静一会，之后再沟通', '尽量回避冲突，不想吵架']],
+    ['面对全新的任务，你的心态？', ['很兴奋，想立刻尝试', '有点好奇，但需要先了解清楚', '会有压力，担心做不好']],
+    ['对于别人的小缺点，你会？', ['会直接指出来', '心里清楚，但不会多说', '包容，不太在意细枝末节']],
+    ['遇到压力大的时候，你会？', ['找人吐槽释放情绪', '做点爱好的事转移注意力', '自己默默消化，不向外流露']]
+  ];
+
+  const form = document.getElementById('questionnaire-form');
+  const list = document.getElementById('questionnaire-list');
+  const count = document.getElementById('questionnaire-count');
+  const resultCount = document.getElementById('questionnaire-result-count');
+  const progressBar = document.getElementById('questionnaire-progress-bar');
+  const progressTrack = document.querySelector('.questionnaire-progress-track');
+  const result = document.getElementById('questionnaire-result');
+  const summary = document.getElementById('questionnaire-summary');
+  const error = document.getElementById('questionnaire-error');
+  const reset = document.getElementById('questionnaire-reset');
+  const submit = form.querySelector('.questionnaire-button-primary');
+  const questionnaireApiUrl = 'http://127.0.0.1:8080/api/questionnaire';
+
+  questions.forEach(function (question, questionIndex) {
+    const fieldset = document.createElement('fieldset');
+    fieldset.className = 'questionnaire-question';
+    fieldset.dataset.question = String(questionIndex + 1);
+
+    const legend = document.createElement('legend');
+    const number = document.createElement('span');
+    number.className = 'questionnaire-number';
+    number.textContent = String(questionIndex + 1).padStart(2, '0');
+    legend.append(number, document.createTextNode(question[0]));
+    fieldset.appendChild(legend);
+
+    const options = document.createElement('div');
+    options.className = 'questionnaire-options';
+    question[1].forEach(function (option, optionIndex) {
+      const label = document.createElement('label');
+      label.className = 'questionnaire-option';
+
+      const input = document.createElement('input');
+      input.type = 'radio';
+      input.name = 'question-' + (questionIndex + 1);
+      input.value = option;
+      input.dataset.answer = String.fromCharCode(65 + optionIndex);
+      input.dataset.question = String(questionIndex + 1);
+
+      const marker = document.createElement('span');
+      marker.className = 'questionnaire-option-marker';
+      marker.textContent = String.fromCharCode(65 + optionIndex);
+
+      const text = document.createElement('span');
+      text.className = 'questionnaire-option-text';
+      text.textContent = option;
+
+      label.append(input, marker, text);
+      options.appendChild(label);
+      input.addEventListener('change', updateProgress);
+    });
+
+    fieldset.appendChild(options);
+    list.appendChild(fieldset);
+  });
+
+  function getAnsweredCount() {
+    return questions.reduce(function (answered, _, index) {
+      return answered + (form.querySelector('input[name="question-' + (index + 1) + '"]:checked') ? 1 : 0);
+    }, 0);
+  }
+
+  function updateProgress() {
+    const answered = getAnsweredCount();
+    count.textContent = String(answered);
+    resultCount.textContent = String(answered);
+    progressBar.style.width = (answered / questions.length) * 100 + '%';
+    progressTrack.setAttribute('aria-valuenow', String(answered));
+  }
+
+  function clearError() {
+    error.hidden = true;
+    list.querySelectorAll('.questionnaire-question').forEach(function (fieldset) {
+      fieldset.classList.remove('questionnaire-question-error');
+    });
+  }
+
+  form.addEventListener('submit', async function (event) {
+    event.preventDefault();
+    clearError();
+
+    const unanswered = questions.findIndex(function (_, index) {
+      return !form.querySelector('input[name="question-' + (index + 1) + '"]:checked');
+    });
+
+    if (unanswered !== -1) {
+      const fieldset = list.querySelector('[data-question="' + (unanswered + 1) + '"]');
+      fieldset.classList.add('questionnaire-question-error');
+      error.hidden = false;
+      fieldset.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      fieldset.querySelector('input').focus({ preventScroll: true });
+      return;
+    }
+
+    submit.disabled = true;
+    submit.textContent = '正在提交...';
+
+    const payload = new URLSearchParams();
+    questions.forEach(function (_, index) {
+      const selected = form.querySelector('input[name="question-' + (index + 1) + '"]:checked');
+      payload.set('q' + (index + 1), selected.dataset.answer);
+    });
+
+    try {
+      const response = await fetch(questionnaireApiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: payload.toString()
+      });
+
+      if (!response.ok) {
+        throw new Error('request_failed');
+      }
+    } catch (requestError) {
+      error.textContent = '提交失败，请检查服务器是否运行，然后重试。';
+      error.hidden = false;
+      submit.disabled = false;
+      submit.textContent = '查看结果';
+      return;
+    }
+
+    summary.replaceChildren();
+    questions.forEach(function (_, index) {
+      const selected = form.querySelector('input[name="question-' + (index + 1) + '"]:checked');
+      const item = document.createElement('li');
+      item.textContent = selected.value;
+      summary.appendChild(item);
+    });
+    result.hidden = false;
+    result.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    submit.disabled = false;
+    submit.textContent = '已提交';
+  });
+
+  reset.addEventListener('click', function () {
+    form.reset();
+    clearError();
+    result.hidden = true;
+    summary.replaceChildren();
+    submit.disabled = false;
+    submit.textContent = '查看结果';
+    updateProgress();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  updateProgress();
+})();
+</script>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">敲代码的猫</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/2026/09/09/index/">http://example.com/2026/09/09/index/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/icon.jpg" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav id="pagination"><div class="pagination"></div></nav></div></main><footer id="footer" style="background-image: url(/img/background1.jpg);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By 敲代码的猫</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.7.0</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.7.0"></script><script src="/js/main.js?v=5.7.0"></script><script src="/"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@19.1.3/dist/lazyload.iife.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading Database</span></div><div class="local-search-input"><input placeholder="搜索文章" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.7.0"></script></div></div></body></html>
