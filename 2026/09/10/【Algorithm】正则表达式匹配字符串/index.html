@@ -1,0 +1,304 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>【Algorithm】正则表达式匹配字符串 | 敲代码的猫</title><meta name="author" content="敲代码的猫"><meta name="copyright" content="敲代码的猫"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="题目   实现简单的正则表达式匹配，本题中模式字符串所包含的字符的范围为字母、”.”、”*“、”?” “.”匹配任何单个字符 “*”与模式字符串前一个字符组成一组，匹配零个或多个前面的字符 “?”与模式字符串前一个字符组成一组，匹配一个或多个前面的字符 匹配应该覆盖到整个输入的字符串(而不是局部的)，测试用例中不会出现超出匹配字符范围之外的字符，也不会出现非法的模式字符串。 使用语言提供的正则表达">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【Algorithm】正则表达式匹配字符串">
+<meta property="og:url" content="http://example.com/2026/09/10/%E3%80%90Algorithm%E3%80%91%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8C%B9%E9%85%8D%E5%AD%97%E7%AC%A6%E4%B8%B2/index.html">
+<meta property="og:site_name" content="敲代码的猫">
+<meta property="og:description" content="题目   实现简单的正则表达式匹配，本题中模式字符串所包含的字符的范围为字母、”.”、”*“、”?” “.”匹配任何单个字符 “*”与模式字符串前一个字符组成一组，匹配零个或多个前面的字符 “?”与模式字符串前一个字符组成一组，匹配一个或多个前面的字符 匹配应该覆盖到整个输入的字符串(而不是局部的)，测试用例中不会出现超出匹配字符范围之外的字符，也不会出现非法的模式字符串。 使用语言提供的正则表达">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/870135.png">
+<meta property="article:published_time" content="2026-09-10T06:54:03.000Z">
+<meta property="article:modified_time" content="2026-09-10T08:00:12.749Z">
+<meta property="article:author" content="敲代码的猫">
+<meta property="article:tag" content="Algorithm">
+<meta property="article:tag" content="String">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/870135.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "【Algorithm】正则表达式匹配字符串",
+  "url": "http://example.com/2026/09/10/%E3%80%90Algorithm%E3%80%91%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8C%B9%E9%85%8D%E5%AD%97%E7%AC%A6%E4%B8%B2/",
+  "image": "http://example.com/img/870135.png",
+  "datePublished": "2026-09-10T06:54:03.000Z",
+  "dateModified": "2026-09-10T08:00:12.749Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "敲代码的猫",
+      "url": "http://example.com"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/icon.jpg"><link rel="canonical" href="http://example.com/2026/09/10/%E3%80%90Algorithm%E3%80%91%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8C%B9%E9%85%8D%E5%AD%97%E7%AC%A6%E4%B8%B2/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.7.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        const data = { value }
+
+        if (ttl != null) {
+          data.expiry = Date.now() + ttl * 86400000
+        }
+
+        localStorage.setItem(key, JSON.stringify(data))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return
+
+        try {
+          const data = JSON.parse(itemStr)
+
+          if (data.expiry && Date.now() > data.expiry) {
+            localStorage.removeItem(key)
+            return
+          }
+
+          return data.value
+        } catch {
+          localStorage.removeItem(key)
+        }
+      }
+    }
+
+    const scriptCache = new Map()
+    const cssCache = new Map()
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => {
+        if (scriptCache.has(url)) {
+          return scriptCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+
+          script.src = url
+          script.async = true
+
+          for (const key in attr) {
+            script.setAttribute(key, attr[key])
+          }
+
+          script.onload = resolve
+          script.onerror = reject
+
+          document.head.appendChild(script)
+        })
+
+        scriptCache.set(url, promise)
+
+        return promise
+      },
+      getCSS: (url, id) => {
+        if (cssCache.has(url)) {
+          return cssCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const link = document.createElement('link')
+
+          link.rel = 'stylesheet'
+          link.href = url
+
+          if (id) {
+            link.id = id
+          }
+
+          link.onload = resolve
+          link.onerror = reject
+
+          document.head.appendChild(link)
+        })
+
+        cssCache.set(url, promise)
+
+        return promise
+      },
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const metaThemeColor = document.querySelector('meta[name="theme-color"]')
+      const activateDarkMode = () => {
+        document.documentElement.dataset.theme = 'dark'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', 'undefined')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.dataset.theme = 'light'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', 'undefined')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"No results found for: ${query}","hits_stats":"${hits} articles found"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: '[object Object]',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '【Algorithm】正则表达式匹配字符串',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/custom.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div class="bg-animation" id="web_bg" style="background-image: url(/img/background.jpg);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/loading.gif" data-lazy-src="/img/icon.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">38</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">24</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">2</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/870135.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">敲代码的猫</span></a><a class="nav-page-title" href="/"><span class="site-name">【Algorithm】正则表达式匹配字符串</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  Back to Home</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> Search</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">【Algorithm】正则表达式匹配字符串</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2026-09-10T06:54:03.000Z" title="Created 2026-09-10 14:54:03">2026-09-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-09-10T08:00:12.749Z" title="Updated 2026-09-10 16:00:12">2026-09-10</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Algorithm/">Algorithm</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><div class="note purple icon-padding flat"><i class="note-icon fas fa-wand-magic-sparkles"></i><p>题目</p>
+</div>
+
+<p>实现简单的正则表达式匹配，本题中模式字符串所包含的字符的范围为字母、”.”、”*“、”?”</p>
+<p>“.”匹配任何单个字符</p>
+<p>“*”与模式字符串前一个字符组成一组，匹配零个或多个前面的字符</p>
+<p>“?”与模式字符串前一个字符组成一组，匹配一个或多个前面的字符</p>
+<p>匹配应该覆盖到整个输入的字符串(而不是局部的)，测试用例中不会出现超出匹配字符范围之外的字符，也不会出现非法的模式字符串。 使用语言提供的正则表达式库将算作无效答案。</p>
+<p>本题使用ACM模式作答</p>
+<p><strong>输入描述</strong></p>
+<p>输入的第一行为需要检测匹配的用例数。 接下来的每一行包括两个字符串，前一个字符串为待匹配的字符串，后一个字符串为模式字符串。待匹配字符串的长度不超过10。 </p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">5</span><br><span class="line">a a.</span><br><span class="line">a a.*</span><br><span class="line">ab .*</span><br><span class="line">ab .?</span><br><span class="line">b a?</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出描述</strong></p>
+<p>对于每一个测试用例，如果匹配则输出一行true，如果不匹配则输出一行false。</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">false</span><br><span class="line">true</span><br><span class="line">true</span><br><span class="line">true</span><br><span class="line">false</span><br></pre></td></tr></table></figure>
+
+
+
+<div class="note orange icon-padding flat"><i class="note-icon fas fa-lightbulb"></i><p>题解</p>
+</div>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">RegexMatcher</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    string text;</span><br><span class="line">    string pattern;</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; memo;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 判断 text[i] 是否能够匹配 pattern[j] 这个基本单元</span></span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isMatch</span><span class="params">(<span class="type">int</span> i, <span class="type">int</span> j)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (i &gt;= <span class="built_in">static_cast</span>&lt;<span class="type">int</span>&gt;(text.<span class="built_in">size</span>())) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> pattern[j] == <span class="string">&#x27;.&#x27;</span> || pattern[j] == text[i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 判断 text[i..] 是否能够与 pattern[j..] 完全匹配</span></span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> i, <span class="type">int</span> j)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 模式字符串已经处理完，只有输入字符串也处理完才算匹配</span></span><br><span class="line">        <span class="keyword">if</span> (j == <span class="built_in">static_cast</span>&lt;<span class="type">int</span>&gt;(pattern.<span class="built_in">size</span>())) &#123;</span><br><span class="line">            <span class="keyword">return</span> i == <span class="built_in">static_cast</span>&lt;<span class="type">int</span>&gt;(text.<span class="built_in">size</span>());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span>&amp; result = memo[i][j];</span><br><span class="line">        <span class="keyword">if</span> (result != <span class="number">-1</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">bool</span> matched = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 当前基本单元后面有 * 或 ?</span></span><br><span class="line">        <span class="keyword">if</span> (j + <span class="number">1</span> &lt; <span class="built_in">static_cast</span>&lt;<span class="type">int</span>&gt;(pattern.<span class="built_in">size</span>()) &amp;&amp;</span><br><span class="line">            (pattern[j + <span class="number">1</span>] == <span class="string">&#x27;*&#x27;</span> || pattern[j + <span class="number">1</span>] == <span class="string">&#x27;?&#x27;</span>)) &#123;</span><br><span class="line">            <span class="type">char</span> modifier = pattern[j + <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (modifier == <span class="string">&#x27;*&#x27;</span>) &#123;</span><br><span class="line">                <span class="comment">// * 匹配 0 次，直接跳过当前基本单元和 *</span></span><br><span class="line">                matched = <span class="built_in">dfs</span>(i, j + <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">                <span class="comment">// * 匹配至少 1 次，并继续使用当前基本单元</span></span><br><span class="line">                <span class="keyword">if</span> (!matched &amp;&amp; <span class="built_in">isMatch</span>(i, j)) &#123;</span><br><span class="line">                    matched = <span class="built_in">dfs</span>(i + <span class="number">1</span>, j);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="comment">// ? 至少匹配 1 次，因此不能直接跳过</span></span><br><span class="line">                <span class="keyword">if</span> (<span class="built_in">isMatch</span>(i, j)) &#123;</span><br><span class="line">                    <span class="comment">// 匹配 1 次后结束当前组</span></span><br><span class="line">                    matched = <span class="built_in">dfs</span>(i + <span class="number">1</span>, j + <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">                    <span class="comment">// 匹配 1 次后继续匹配当前基本单元</span></span><br><span class="line">                    <span class="keyword">if</span> (!matched) &#123;</span><br><span class="line">                        matched = <span class="built_in">dfs</span>(i + <span class="number">1</span>, j);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 普通字符或 &#x27;.&#x27; 必须匹配当前字符</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">isMatch</span>(i, j)) &#123;</span><br><span class="line">                matched = <span class="built_in">dfs</span>(i + <span class="number">1</span>, j + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        result = matched ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> matched;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">match</span><span class="params">(<span class="type">const</span> string&amp; input, <span class="type">const</span> string&amp; p)</span> </span>&#123;</span><br><span class="line">        text = input;</span><br><span class="line">        pattern = p;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 多开一行和一列，覆盖字符串或模式处理完的状态</span></span><br><span class="line">        memo.<span class="built_in">assign</span>(text.<span class="built_in">size</span>() + <span class="number">1</span>,</span><br><span class="line">                    <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(pattern.<span class="built_in">size</span>() + <span class="number">1</span>, <span class="number">-1</span>));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">dfs</span>(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">    cin.<span class="built_in">tie</span>(<span class="literal">nullptr</span>);</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> testCases;</span><br><span class="line">    cin &gt;&gt; testCases;</span><br><span class="line"></span><br><span class="line">    RegexMatcher matcher;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (testCases--) &#123;</span><br><span class="line">        string text;</span><br><span class="line">        string pattern;</span><br><span class="line">        cin &gt;&gt; text &gt;&gt; pattern;</span><br><span class="line"></span><br><span class="line">        cout &lt;&lt; boolalpha &lt;&lt; matcher.<span class="built_in">match</span>(text, pattern) &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="http://example.com">敲代码的猫</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="http://example.com/2026/09/10/%E3%80%90Algorithm%E3%80%91%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8C%B9%E9%85%8D%E5%AD%97%E7%AC%A6%E4%B8%B2/">http://example.com/2026/09/10/%E3%80%90Algorithm%E3%80%91%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8C%B9%E9%85%8D%E5%AD%97%E7%AC%A6%E4%B8%B2/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Algorithm/">Algorithm</a><a class="post-meta__tags" href="/tags/String/">String</a></div><div class="post-share"><div class="social-share" data-image="/img/870135.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/09/10/%E3%80%90Algorithm%E3%80%91%E5%88%A4%E6%96%AD%E7%9F%A9%E5%BD%A2%E5%B0%81%E9%97%AD%E7%BB%93%E6%9E%84/" title="【Algorithm】判断矩形封闭结构"><img class="cover" src="/img/loading.gif" data-lazy-src="/img/870135.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">【Algorithm】判断矩形封闭结构</div></div><div class="info-2"><div class="info-item-1">题目   有一个9x9的正方形棋盘，规定横向为x轴，纵向为y轴，并以左上角格子为坐标原点(0,0)。那么棋盘中每个格子的位置都可以用(x,y)进行表示(x,y∈[0,8]) 现在我们会在棋盘上按顺序种植任意数量的1x1大小的树苗。每棵小树苗在种植后沿指定生长方向一直生长，直至达到最大生长高度或者遇到障碍。 在种植完所有树苗后(所有树苗均结束生长)，我希望可以判断当前棋盘上是否 存在矩形封闭结构? 1、最大生长高度(maxGrowLength)：不包含初始大小在内的树苗最大占用格子数量(最大生长高度为7的树苗，初始位置(8,0)且向下生长时，至多覆盖从(8,0)到(8,7)的所有8个格子) 2、生长方向(growDirection)：上、下、左、右 3、障碍(停止生长的条件)：当前树苗生长方向上的下一个格子超出棋盘、已 经存在其他树苗的情况下，停止生长 4、种植顺序：当且仅当上一种植的树苗结束生长后，才会种植下一个树苗(无需考虑生长之间的抢占问题) 5、矩形封闭结构：棋盘上存在的一个矩形，其四边完全由树苗组成 树苗配置结构如下，请实现checkTreeFormClosedLoop函...</div></div></div></a><a class="pagination-related" href="/2026/09/08/%E3%80%90Algorithm%E3%80%91IPV4%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%95%B4%E6%95%B0/" title="【Algorithm】IPV4地址转整数"><img class="cover" src="/img/loading.gif" data-lazy-src="/img/870135.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">【Algorithm】IPV4地址转整数</div></div><div class="info-2"><div class="info-item-1">IPV4地址转整数题目   IPv4地址字符串为点’.’分隔的四段数字，由 4 小节组成，每节的范围为 0 ~ 255，请编写函数将其转换为32比特无符号整数，其中字符串最左边的一段在最高位一侧，最右边在最低位一侧。例如202.106.0.20转换为0xCA6A0014 本题使用ACM模式作答 示例 输入 12202.106.0.206.7.8.999  输出 12CA6A0014X  题解   思路 程序分为两步：  判断 IPv4 字符串是否合法，并解析出四个数字。 将四个数字按字节拼接成一个 32 位整数，再转换为 8 位大写十六进制字符串。  对于： 1202.106.0.20  四段数字分别占据 32 位整数中的不同位置： 12202       106       0       20最高 8 位  次高 8 位  次低 8 位  最低 8 位  数学表达式为： 1202 &lt;&lt; 24 | 106 &lt;&lt; 16 | 0 &lt;&lt; 8 | 20  结果是： 10xCA6A0014  完整代码 1234567891011121314151617...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/09/08/%E3%80%90Algorithm%E3%80%91IPV4%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%95%B4%E6%95%B0/" title="【Algorithm】IPV4地址转整数"><img class="cover" src="/img/loading.gif" data-lazy-src="/img/870135.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-09-08</div><div class="info-item-2">【Algorithm】IPV4地址转整数</div></div><div class="info-2"><div class="info-item-1">IPV4地址转整数题目   IPv4地址字符串为点’.’分隔的四段数字，由 4 小节组成，每节的范围为 0 ~ 255，请编写函数将其转换为32比特无符号整数，其中字符串最左边的一段在最高位一侧，最右边在最低位一侧。例如202.106.0.20转换为0xCA6A0014 本题使用ACM模式作答 示例 输入 12202.106.0.206.7.8.999  输出 12CA6A0014X  题解   思路 程序分为两步：  判断 IPv4 字符串是否合法，并解析出四个数字。 将四个数字按字节拼接成一个 32 位整数，再转换为 8 位大写十六进制字符串。  对于： 1202.106.0.20  四段数字分别占据 32 位整数中的不同位置： 12202       106       0       20最高 8 位  次高 8 位  次低 8 位  最低 8 位  数学表达式为： 1202 &lt;&lt; 24 | 106 &lt;&lt; 16 | 0 &lt;&lt; 8 | 20  结果是： 10xCA6A0014  完整代码 1234567891011121314151617...</div></div></div></a><a class="pagination-related" href="/2026/09/10/%E3%80%90Algorithm%E3%80%91%E5%88%A4%E6%96%AD%E7%9F%A9%E5%BD%A2%E5%B0%81%E9%97%AD%E7%BB%93%E6%9E%84/" title="【Algorithm】判断矩形封闭结构"><img class="cover" src="/img/loading.gif" data-lazy-src="/img/870135.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-09-10</div><div class="info-item-2">【Algorithm】判断矩形封闭结构</div></div><div class="info-2"><div class="info-item-1">题目   有一个9x9的正方形棋盘，规定横向为x轴，纵向为y轴，并以左上角格子为坐标原点(0,0)。那么棋盘中每个格子的位置都可以用(x,y)进行表示(x,y∈[0,8]) 现在我们会在棋盘上按顺序种植任意数量的1x1大小的树苗。每棵小树苗在种植后沿指定生长方向一直生长，直至达到最大生长高度或者遇到障碍。 在种植完所有树苗后(所有树苗均结束生长)，我希望可以判断当前棋盘上是否 存在矩形封闭结构? 1、最大生长高度(maxGrowLength)：不包含初始大小在内的树苗最大占用格子数量(最大生长高度为7的树苗，初始位置(8,0)且向下生长时，至多覆盖从(8,0)到(8,7)的所有8个格子) 2、生长方向(growDirection)：上、下、左、右 3、障碍(停止生长的条件)：当前树苗生长方向上的下一个格子超出棋盘、已 经存在其他树苗的情况下，停止生长 4、种植顺序：当且仅当上一种植的树苗结束生长后，才会种植下一个树苗(无需考虑生长之间的抢占问题) 5、矩形封闭结构：棋盘上存在的一个矩形，其四边完全由树苗组成 树苗配置结构如下，请实现checkTreeFormClosedLoop函...</div></div></div></a><a class="pagination-related" href="/2026/08/21/%E3%80%90Algorithm%E3%80%91%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" title="【Algorithm】动态规划"><img class="cover" src="/img/loading.gif" data-lazy-src="/img/wujianmiao.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-08-21</div><div class="info-item-2">【Algorithm】动态规划</div></div><div class="info-2"><div class="info-item-1">动态规划（DP）1.前言1.1 DP是什么？DP（动态规划） 是什么？   动态规划适合解决一类问题： 12一个大问题的答案，可以由若干小问题的答案推出来。并且这些小问题会被反复用到。  比如斐波那契： 1f(n) = f(n - 1) + f(n - 2)  如果递归暴力算，会重复计算很多次。DP 就是把这些结果存下来。 1.2 做 DP 题的四步做任何 DP 题，都按这四步走：  定义状态：dp[i] &#x2F; dp[i][j]表示什么？ 写状态转移：dp[i] 如何由更小状态推出来？ 初始化：最小规模问题的答案是什么？ 确定遍历顺序：先算谁，后算谁？  其中最重要的是第一步：   状态定义错了，后面全错。  状态定义对了，转移通常就自然出来了。 1.3 DP 和贪心的区别贪心 每一步都做当前看起来最优的选择。 1当前最优 -&gt; 希望全局最优  比如跳跃游戏：维护当前最远能到哪里。 DP 保存所有可能状态，从小问题推大问题。 1多个子问题答案 -&gt; 推出当前答案  判断口诀 12只需要维护一个最优指标，通常是贪心。需要比较多种选择，并保存中间状态，通常是 DP...</div></div></div></a><a class="pagination-related" href="/2024/02/22/%E3%80%90Algorithm%E3%80%91%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%80%86%E5%BA%8F%E5%AF%B9/" title="【Algorithm】数组中的逆序对"><img class="cover" src="/img/loading.gif" data-lazy-src="/img/870135.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-02-22</div><div class="info-item-2">【Algorithm】数组中的逆序对</div></div><div class="info-2"><div class="info-item-1">数组中的逆序对题目   在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。输入一个数组，求出这个数组中的逆序对的总数。 示例: 12输入: [7,5,6,4]输出: 5  限制： 10 &lt;= 数组长度 &lt;= 50000  题解   对于数组[7，5，6，4],若要计算其中的逆序对个数，及 [7,5],[7,6],[7,4],[5,4],[6,4],可以发现，若将所有逆序对依次交换其在数组中的位置，我们将会得到一个有序的数组，因此，我们可以用排序的思想来解决该题。 归并排序 归并排序是利用归并的思想实现的排序方法，该算法 采用经典的分治策略(分治法将问题分成一些小的问题然后递归求解，而治的阶段则将分的阶段得到的各答案”修补”在一起，即分而治之)。 具体可以查看：10大排序算法 归并排序是建立在归并操作上的一种有效的排序算法，归并排序对序列的元素进行逐层折半分组，然后从最小分组开始比较排序，合并成一个大的分组，逐层进行，最终所有的元素都是有序的。 因此要求数组中的逆序对数，只需要计算通过归并排序，将数组中逆序对交换的次数即可。代码如下： 12...</div></div></div></a><a class="pagination-related" href="/2026/09/07/%E3%80%90Algorithm%E3%80%9110%E5%A4%A7%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" title="【Algorithm】10大排序算法"><img class="cover" src="/img/loading.gif" data-lazy-src="/img/870135.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-09-07</div><div class="info-item-2">【Algorithm】10大排序算法</div></div><div class="info-2"><div class="info-item-1">10大排序算法0.头文件sort.h 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152#ifndef DEF_SORT_H#define DEF_SORT_H#include &lt;iostream&gt;#include &lt;cmath&gt;#include &lt;algorithm&gt;#include &lt;vector&gt;using namespace std;enum SortMod&#123;    asc,    des&#125;;class Sort&#123;public:    Sort()&#123;&#125;    ~Sort()&#123;&#125;public:    void swap(int &amp;num1, int &amp;num2);    int BubbleSort(vector&lt;int&gt; &amp;nums, SortMod mod);    int Sel...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> Comments</span></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/loading.gif" data-lazy-src="/img/icon.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">敲代码的猫</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">38</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">24</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/zhangjinhao03"><i class="fab fa-github"></i><span>github</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">欢迎来到敲代码的猫的博客</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2026/09/10/%E3%80%90Algorithm%E3%80%91%E5%88%A4%E6%96%AD%E7%9F%A9%E5%BD%A2%E5%B0%81%E9%97%AD%E7%BB%93%E6%9E%84/" title="【Algorithm】判断矩形封闭结构"><img src="/img/loading.gif" data-lazy-src="/img/870135.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Algorithm】判断矩形封闭结构"/></a><div class="content"><a class="title" href="/2026/09/10/%E3%80%90Algorithm%E3%80%91%E5%88%A4%E6%96%AD%E7%9F%A9%E5%BD%A2%E5%B0%81%E9%97%AD%E7%BB%93%E6%9E%84/" title="【Algorithm】判断矩形封闭结构">【Algorithm】判断矩形封闭结构</a><time datetime="2026-09-10T07:02:31.000Z" title="Created 2026-09-10 15:02:31">2026-09-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/09/10/%E3%80%90Algorithm%E3%80%91%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8C%B9%E9%85%8D%E5%AD%97%E7%AC%A6%E4%B8%B2/" title="【Algorithm】正则表达式匹配字符串"><img src="/img/loading.gif" data-lazy-src="/img/870135.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Algorithm】正则表达式匹配字符串"/></a><div class="content"><a class="title" href="/2026/09/10/%E3%80%90Algorithm%E3%80%91%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8C%B9%E9%85%8D%E5%AD%97%E7%AC%A6%E4%B8%B2/" title="【Algorithm】正则表达式匹配字符串">【Algorithm】正则表达式匹配字符串</a><time datetime="2026-09-10T06:54:03.000Z" title="Created 2026-09-10 14:54:03">2026-09-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/09/08/%E3%80%90Algorithm%E3%80%91IPV4%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%95%B4%E6%95%B0/" title="【Algorithm】IPV4地址转整数"><img src="/img/loading.gif" data-lazy-src="/img/870135.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Algorithm】IPV4地址转整数"/></a><div class="content"><a class="title" href="/2026/09/08/%E3%80%90Algorithm%E3%80%91IPV4%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%95%B4%E6%95%B0/" title="【Algorithm】IPV4地址转整数">【Algorithm】IPV4地址转整数</a><time datetime="2026-09-08T07:30:02.000Z" title="Created 2026-09-08 15:30:02">2026-09-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/09/08/%E3%80%90Android%E3%80%91Java-Heap%E4%B8%8ECC%E7%AE%97%E6%B3%95/" title="【Android】Java Heap与CC算法"><img src="/img/loading.gif" data-lazy-src="/img/1400253.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Android】Java Heap与CC算法"/></a><div class="content"><a class="title" href="/2026/09/08/%E3%80%90Android%E3%80%91Java-Heap%E4%B8%8ECC%E7%AE%97%E6%B3%95/" title="【Android】Java Heap与CC算法">【Android】Java Heap与CC算法</a><time datetime="2026-09-08T06:15:25.000Z" title="Created 2026-09-08 14:15:25">2026-09-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2026/09/07/%E3%80%90C++%E3%80%91%E5%B8%B8%E8%A7%81%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E8%B7%B5/" title="【C++】常见设计与实践"><img src="/img/loading.gif" data-lazy-src="/img/831764.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【C++】常见设计与实践"/></a><div class="content"><a class="title" href="/2026/09/07/%E3%80%90C++%E3%80%91%E5%B8%B8%E8%A7%81%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E8%B7%B5/" title="【C++】常见设计与实践">【C++】常见设计与实践</a><time datetime="2026-09-07T11:03:04.000Z" title="Created 2026-09-07 19:03:04">2026-09-07</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/img/background1.jpg);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By 敲代码的猫</span><span class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.7.0</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="Scroll to Comments"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.7.0"></script><script src="/js/main.js?v=5.7.0"></script><script src="/"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@19.1.3/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const getGiscusTheme = theme => theme === 'dark' ? 'preferred_color_scheme' : 'preferred_color_scheme'
+
+  const createScriptElement = config => {
+    const ele = document.createElement('script')
+    Object.entries(config).forEach(([key, value]) => {
+      ele.setAttribute(key, value)
+    })
+    return ele
+  }
+
+  const loadGiscus = (el = document, key) => {
+    const mappingConfig = isShuoshuo
+      ? { 'data-mapping': 'specific', 'data-term': key }
+      : { 'data-mapping': (option && option['data-mapping']) || 'pathname' }
+
+    const giscusConfig = {
+      src: 'https://giscus.app/client.js',
+      'data-repo': 'zhangjinhao03/zhangjinhao03-blog-comments',
+      'data-repo-id': 'R_kgDOTvshmA',
+      'data-category-id': 'DIC_kwDOTvshmM4DCykF',
+      'data-theme': getGiscusTheme(document.documentElement.getAttribute('data-theme')),
+      'data-reactions-enabled': '1',
+      crossorigin: 'anonymous',
+      async: true,
+      ...option,
+      ...mappingConfig
+    }
+
+    const scriptElement = createScriptElement(giscusConfig)
+
+    el.querySelector('#giscus-wrap').appendChild(scriptElement)
+
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyGiscus = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+  }
+
+  const changeGiscusTheme = theme => {
+    const iframe = document.querySelector('#giscus-wrap iframe')
+    if (iframe) {
+      const message = {
+        giscus: {
+          setConfig: {
+            theme: getGiscusTheme(theme)
+          }
+        }
+      }
+      iframe.contentWindow.postMessage(message, 'https://giscus.app')
+    }
+  }
+
+  btf.addGlobalFn('themeChange', changeGiscusTheme, 'giscus')
+
+  if (isShuoshuo) {
+    'Giscus' === 'Giscus'
+      ? window.shuoshuoComment = { loadComment: loadGiscus }
+      : window.loadOtherComment = loadGiscus
+    return
+  }
+
+  if ('Giscus' === 'Giscus' || !false) {
+    if (false) btf.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+    else loadGiscus()
+  } else {
+    window.loadOtherComment = loadGiscus
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading Database</span></div><div class="local-search-input"><input placeholder="搜索文章" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.7.0"></script></div></div></body></html>
